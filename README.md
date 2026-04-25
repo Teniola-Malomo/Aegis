@@ -1,30 +1,28 @@
 # Aegis
 
-Blockchain-enabled federated learning framework for cyber threat detection.
-
-Detects DDoS, botnets, and C&C activity while keeping data decentralized and private.
+A cybersecurity system that uses federated learning and blockchain to detect threats. It shares threat data in a decentralized way and monitors network traffic in real time to identify attacks like DDoS and botnets, while keeping data private.
 
 **Final Year Project - Dublin City University**
 
-## Tech Stack
+## How it works
+
+- An ML model watches network traffic and picks up on DDoS, botnets, and command-and-control (C&C) activity
+- Federated learning lets multiple nodes train the model together without sharing raw data
+- A blockchain ledger (Hyperledger Fabric) keeps a secure, tamper-proof record of shared threat data
+- A React dashboard shows what's happening in real time
+- Zeek handles the network monitoring and telemetry
+- Everything runs in Docker containers for easy setup and testing
+
+## Built with
 
 Python, PyTorch, React, Hyperledger Fabric, Zeek, MongoDB, Docker
 
 ## Docker
 
-Pre-built containers available on Docker Hub:
+Pre-built containers are on Docker Hub:
 
 ```
 docker pull panichb2/aegis
 ```
 
-[View on Docker Hub](https://hub.docker.com/r/panichb2/aegis/tags)
-
-## Architecture
-
-- ML model for tracking network traffic, C&C activities, DDoS, and botnets
-- Federated learning for decentralized model training
-- Blockchain ledger (Hyperledger Fabric) for secure data sharing
-- React dashboard populated with backend data
-- Zeek for network monitoring and telemetry
-- Docker for multi-environment network traffic testing
+[View all tags on Docker Hub](https://hub.docker.com/r/panichb2/aegis/tags)
