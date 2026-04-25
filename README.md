@@ -15,14 +15,27 @@ A cybersecurity system that uses federated learning and blockchain to detect thr
 
 ## Built with
 
-Python, PyTorch, React, Hyperledger Fabric, Zeek, MongoDB, Docker
+Python, PyTorch, React, Hyperledger Fabric, Zeek, MongoDB, InfluxDB, Grafana, Telegraf, Docker
 
 ## Docker
 
-Pre-built containers are on Docker Hub:
+The whole system is containerized - 6 services, all on [Docker Hub](https://hub.docker.com/r/panichb2/aegis/tags):
 
-```
-docker pull panichb2/aegis
-```
+| Container | What it does | Size |
+|-----------|-------------|------|
+| `panichb2/aegis:p2pfl` | Federated learning node - trains and shares ML models across peers | ~1 GB |
+| `panichb2/aegis:slips` | Network intrusion detection - watches traffic for threats | ~1.5 GB |
+| `panichb2/aegis:hiero-ledger` | Blockchain ledger - stores shared threat data securely | ~545 MB |
+| `panichb2/aegis:grafana` | Dashboard - visualizes network metrics and alerts | ~173 MB |
+| `panichb2/aegis:influxdb` | Time-series database - stores telemetry and metrics | ~174 MB |
+| `panichb2/aegis:telegraf` | Metrics collector - gathers data from services and pushes to InfluxDB | ~118 MB |
 
-[View all tags on Docker Hub](https://hub.docker.com/r/panichb2/aegis/tags)
+```bash
+# Pull all containers
+docker pull panichb2/aegis:p2pfl
+docker pull panichb2/aegis:slips
+docker pull panichb2/aegis:hiero-ledger
+docker pull panichb2/aegis:grafana
+docker pull panichb2/aegis:influxdb
+docker pull panichb2/aegis:telegraf
+```
